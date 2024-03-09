@@ -21,11 +21,23 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontal_recycler_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/best_sellers"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/new_launches"
+        />
+
     <TextView
         android:id="@+id/new_launches"
         android:layout_width="240dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:background="#DFA3D7"
         android:gravity="center"
         android:text="New Launches"
@@ -41,7 +53,7 @@
         android:layout_width="240dp"
         android:layout_height="60dp"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="200dp"
         android:layout_marginEnd="10dp"
         android:background="#DFA3D7"
         android:gravity="center"
@@ -50,8 +62,20 @@
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_launches"
+        app:layout_constraintTop_toBottomOf="@+id/new_launches" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/horizontal_recycler_view2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:orientation="horizontal"
+        android:scrollbars="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/best_sellers"
+        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
