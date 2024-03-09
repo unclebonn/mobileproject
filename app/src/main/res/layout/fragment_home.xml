@@ -10,15 +10,42 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
+    <TextView
+        android:id="@+id/navBar"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#353434"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/missa"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="324dp"
+        android:layout_marginTop="16dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/cart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageCosmetic"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="fitXY"
         android:src="@drawable/cosmetic"
         app:layout_constraintBottom_toTopOf="@+id/new_launches"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/navBar"
         />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -38,7 +65,7 @@
         android:layout_width="240dp"
         android:layout_height="60dp"
         android:layout_marginTop="20dp"
-        android:background="#DFA3D7"
+        android:background="@drawable/textview_background"
         android:gravity="center"
         android:text="New Launches"
         android:textColor="@color/black"
@@ -46,7 +73,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/imageCosmetic" />
 
     <TextView
         android:id="@+id/best_sellers"
@@ -55,7 +82,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="200dp"
         android:layout_marginEnd="10dp"
-        android:background="#DFA3D7"
+        android:background="@drawable/textview_background"
         android:gravity="center"
         android:text="Best Sellers"
         android:textColor="@color/black"
