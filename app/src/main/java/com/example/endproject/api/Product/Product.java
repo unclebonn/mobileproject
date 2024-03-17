@@ -1,6 +1,5 @@
 package com.example.endproject.api.Product;
 
-import com.example.endproject.Category.Category;
 import com.google.gson.annotations.SerializedName;
 
 public class Product {
