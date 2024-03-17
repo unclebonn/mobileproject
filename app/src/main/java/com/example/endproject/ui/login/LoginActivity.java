@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -33,11 +34,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), NotificationsFragment.class);
-            startActivity(intent);
-            finish();
-        }
+//        if(currentUser != null){
+//            Intent intent = new Intent(getApplicationContext(), NotificationsFragment.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,21 +89,19 @@ public class LoginActivity extends AppCompatActivity {
                                             SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
                                             editor.putString("token", token);
+                                            Log.d("token", "onLoginSuccess: "+token);
                                             editor.apply();
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
                                         }
                                     });
-
-                                    Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
-
             }
         });
     }
