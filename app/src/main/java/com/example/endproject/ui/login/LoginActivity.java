@@ -16,6 +16,7 @@ import com.example.endproject.MainActivity;
 import com.example.endproject.R;
 import com.example.endproject.api.Auth.Login;
 import com.example.endproject.api.Controllers.LoginController;
+import com.example.endproject.ui.cart.CartDetailActivity;
 import com.example.endproject.ui.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -91,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putString("cart", login.getCart().get_id());
                                             editor.putString("customerId", login.getCustomer().getId());
                                             editor.apply();
-                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            Intent intent = new Intent(getApplicationContext(), CartDetailActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }
