@@ -1,18 +1,22 @@
 package com.example.endproject.ui.login;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.endproject.MainActivity;
 import com.example.endproject.R;
-import com.example.endproject.ui.logout.LogoutActivity;
+import com.example.endproject.api.Controllers.LoginController;
+import com.example.endproject.ui.notifications.NotificationsFragment;
 import com.example.endproject.ui.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -30,11 +34,11 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if(currentUser != null){
-            Intent intent = new Intent(getApplicationContext(), LogoutActivity.class);
-            startActivity(intent);
-            finish();
-        }
+//        if(currentUser != null){
+//            Intent intent = new Intent(getApplicationContext(), NotificationsFragment.class);
+//            startActivity(intent);
+//            finish();
+//        }
     }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,16 +80,28 @@ public class LoginActivity extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(getApplicationContext(), "Login Successful", Toast.LENGTH_SHORT).show();
-                                    Intent intent = new Intent(getApplicationContext(), LogoutActivity.class);
-                                    startActivity(intent);
-                                    finish();
+
+                                    //Call api login
+                                    LoginController loginController = new LoginController();
+                                    loginController.callApiLogin(mAuth.getUid(), new LoginController.LoginCallBack() {
+                                        @Override
+                                        public void onLoginSuccess(String token) {
+                                            SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+                                            SharedPreferences.Editor editor = sharedPreferences.edit();
+                                            editor.putString("token", token);
+                                            Log.d("token", "onLoginSuccess: "+token);
+                                            editor.apply();
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }
+                                    });
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
-
             }
         });
     }
