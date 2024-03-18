@@ -95,7 +95,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/clothingImage"
-                        android:src="@drawable/bag"
+                        android:src="@drawable/cart1"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 
@@ -103,6 +103,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/cartDetail"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="10dp"
@@ -151,40 +152,40 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/row1">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_margin="10dp"
-                android:layout_weight="1"
-                app:cardElevation="20dp"
-                app:cardCornerRadius="20dp">
+<!--            <androidx.cardview.widget.CardView-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_margin="10dp"-->
+<!--                android:layout_weight="1"-->
+<!--                app:cardElevation="20dp"-->
+<!--                app:cardCornerRadius="20dp">-->
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                <RelativeLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent">-->
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/homeName"
-                        android:text="QUOC"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
+<!--                    <TextView-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:id="@+id/homeName"-->
+<!--                        android:text="QUOC"-->
+<!--                        android:textSize="20sp"-->
+<!--                        android:textStyle="bold"-->
 
-                        android:layout_marginTop="10dp"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/homeImage"/>
+<!--                        android:layout_marginTop="10dp"-->
+<!--                        android:layout_centerHorizontal="true"-->
+<!--                        android:layout_below="@+id/homeImage"/>-->
 
-                    <ImageView
-                        android:layout_width="70dp"
-                        android:layout_height="70dp"
-                        android:id="@+id/homeImage"
-                        android:src="@drawable/quoc"
-                        android:layout_marginTop="15dp"
-                        android:layout_centerHorizontal="true"/>
+<!--                    <ImageView-->
+<!--                        android:layout_width="70dp"-->
+<!--                        android:layout_height="70dp"-->
+<!--                        android:id="@+id/homeImage"-->
+<!--                        android:src="@drawable/quoc"-->
+<!--                        android:layout_marginTop="15dp"-->
+<!--                        android:layout_centerHorizontal="true"/>-->
 
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
+<!--                </RelativeLayout>-->
+<!--            </androidx.cardview.widget.CardView>-->
 
             <androidx.cardview.widget.CardView
                 android:layout_width="0dp"
@@ -202,7 +203,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/beautyName"
-                        android:text="HAPPINESS"
+                        android:text="History"
                         android:textSize="20sp"
                         android:textStyle="bold"
 
@@ -214,7 +215,7 @@
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:id="@+id/beautyImage"
-                        android:src="@drawable/pass"
+                        android:src="@drawable/bag"
                         android:layout_marginTop="15dp"
                         android:layout_centerHorizontal="true"/>
 

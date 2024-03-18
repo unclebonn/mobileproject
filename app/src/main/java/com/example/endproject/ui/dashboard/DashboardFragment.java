@@ -13,6 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.endproject.MainActivity;
 import com.example.endproject.R;
 import com.example.endproject.databinding.FragmentDashboardBinding;
 import com.example.endproject.ui.detail.DetailActivity;
@@ -35,7 +36,7 @@ public class DashboardFragment extends Fragment {
         viewBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(requireContext(), LoginActivity.class);
+                Intent intent = new Intent(requireContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
