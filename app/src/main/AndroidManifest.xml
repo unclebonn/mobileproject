@@ -52,6 +52,12 @@
         <activity
             android:name=".ui.register.RegisterActivity"
             android:exported="false" />
+
+
+        <activity android:name=".ui.cart.CartDetailActivity"
+            android:exported="true"
+        />
+
         <activity
             android:name=".MainActivity"
             android:exported="true"
