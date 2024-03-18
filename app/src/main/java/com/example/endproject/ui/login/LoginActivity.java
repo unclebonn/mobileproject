@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.annotation.NonNull;
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -17,8 +16,6 @@ import com.example.endproject.MainActivity;
 import com.example.endproject.R;
 import com.example.endproject.api.Auth.Login;
 import com.example.endproject.api.Controllers.LoginController;
-import com.example.endproject.ui.dashboard.DashboardFragment;
-import com.example.endproject.ui.notifications.NotificationsFragment;
 import com.example.endproject.ui.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -92,12 +89,14 @@ public class LoginActivity extends AppCompatActivity {
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
                                             editor.putString("token", login.getToken());
                                             editor.putString("cart", login.getCart().get_id());
+                                            editor.putString("customerId", login.getCustomer().getId());
                                             editor.apply();
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }
                                     });
+
                                 } else {
                                     Toast.makeText(LoginActivity.this, "Authentication failed.",
                                             Toast.LENGTH_SHORT).show();
