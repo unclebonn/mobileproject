@@ -38,11 +38,10 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageCosmetic"
+            android:id="@+id/detail_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="fitXY"
-            android:src="@drawable/cosmetic"
             app:layout_constraintTop_toBottomOf="@+id/navBar"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -52,21 +51,21 @@
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="50dp"
-            android:text="Product title: super cream"
+            android:layout_marginTop="40dp"
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageCosmetic" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_image" />
 
 
         <TextView
             android:id="@+id/detail_price"
             android:layout_width="match_parent"
             android:layout_height="60dp"
+            android:layout_marginTop="20dp"
             android:layout_marginStart="50dp"
-            android:text="20000$"
             android:textColor="#686666"
             android:textSize="22dp"
             android:textStyle="normal"
@@ -76,61 +75,18 @@
             app:layout_constraintTop_toBottomOf="@+id/detail_title" />
 
         <TextView
-            android:id="@+id/color"
-            android:layout_width="wrap_content"
+            android:id="@+id/detail_description"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginStart="48dp"
-            android:text="Color: "
+            android:layout_marginTop="20dp"
             android:textColor="#292828"
             android:textSize="22dp"
             android:textStyle="normal"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_price" />
 
-        <TextView
-            android:id="@+id/detail_color"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="55dp"
-            android:text="Red"
-            android:textColor="#292828"
-            android:textSize="22dp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.047"
-            app:layout_constraintStart_toStartOf="@+id/color"
-            app:layout_constraintTop_toBottomOf="@+id/detail_price" />
 
-        <TextView
-            android:id="@+id/quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:text="Quantity: "
-            android:textColor="#292828"
-            android:textSize="22dp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/detail_color" />
-
-
-        <TextView
-            android:id="@+id/detail_quantity"
-            android:layout_width="wrap_content"
-            android:layout_height="60dp"
-            android:layout_marginStart="50dp"
-            android:layout_marginTop="20dp"
-            android:text="22"
-            android:textColor="#292828"
-            android:textSize="22dp"
-            android:textStyle="normal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.143"
-            app:layout_constraintStart_toStartOf="@+id/quantity"
-            app:layout_constraintTop_toBottomOf="@+id/detail_color" />
 
         <TextView
             android:id="@+id/text_view_number"
@@ -144,7 +100,7 @@
             app:layout_constraintHorizontal_bias="0.251"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quantity" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
         <Button
             android:id="@+id/minus"
@@ -157,7 +113,7 @@
             android:textColor="@color/black"
             android:textSize="30dp"
             app:layout_constraintStart_toStartOf="@+id/text_view_number"
-            app:layout_constraintTop_toBottomOf="@+id/quantity" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
         <Button
             android:id="@+id/plus"
@@ -171,7 +127,7 @@
             android:textSize="30dp"
             app:layout_constraintEnd_toEndOf="@+id/text_view_number"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/quantity" />
+            app:layout_constraintTop_toBottomOf="@+id/detail_description" />
 
         <Button
             android:id="@+id/detail_addtocart"

@@ -16,13 +16,13 @@ import retrofit2.Response;
 
 public class ProductController {
 
-    private interface ProductsCallBack {
+    public interface ProductsCallBack {
         void onGetProductSuccess(List<Product> listProducts);
 
         void onGetProductFailed();
     }
 
-    private interface ProductDetailCallBack {
+    public interface ProductDetailCallBack {
         void onGetProductSuccess(Product product);
 
         void onGetProductFailed();
@@ -31,7 +31,7 @@ public class ProductController {
 
 
     // api này đúng để lấy tất cả các sản phẩm hiện ra giao diện
-    private void callApiGetProducts(ProductsCallBack productsCallBack) {
+    public void callApiGetProducts(ProductsCallBack productsCallBack) {
         ApiServiceProduct.API_SERVICE_PRODUCT.getListProduct().enqueue(new Callback<ProductResponseModel>() {
             @Override
             public void onResponse(Call<ProductResponseModel> call, Response<ProductResponseModel> response) {
@@ -56,7 +56,7 @@ public class ProductController {
 
 
     // api nay dung de lay detail san pham
-    private void callApiGetProductDetail(String productId, ProductDetailCallBack productDetailCallBack) {
+    public void callApiGetProductDetail(String productId, ProductDetailCallBack productDetailCallBack) {
         ApiServiceProductDetail.API_SERVICE_PRODUCT.getProductDetail(productId).enqueue(new Callback<ProductDetailResponseModel>() {
             @Override
             public void onResponse(Call<ProductDetailResponseModel> call, Response<ProductDetailResponseModel> response) {
