@@ -10,23 +10,6 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <TextView
-        android:id="@+id/navBar"
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:background="#353434"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="80dp"
-        android:layout_height="80dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
-        android:scaleType="fitXY"
-        android:src="@drawable/missa"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:layout_width="70dp"
@@ -45,7 +28,7 @@
         android:scaleType="fitXY"
         android:src="@drawable/cosmetic"
         app:layout_constraintBottom_toTopOf="@+id/new_launches"
-        app:layout_constraintTop_toBottomOf="@+id/navBar"
+        app:layout_constraintTop_toTopOf="parent"
         />
 
     <androidx.recyclerview.widget.RecyclerView

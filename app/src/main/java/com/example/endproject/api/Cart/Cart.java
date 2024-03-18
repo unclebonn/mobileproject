@@ -6,18 +6,22 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 public class Cart {
+    @SerializedName("customer")
+    private String customer;
+    @SerializedName("createAt")
+    private Date createAt;
     @SerializedName("_id")
 
     private String _id;
-    @SerializedName("customer")
-    private Customer customer;
-    @SerializedName("createAt")
-    private Date createAt;
     @SerializedName("__v")
 
     private int __v;
 
-    public Cart(String _id, Customer customer, Date createAt, int __v) {
+
+    public Cart(String customer){
+        this.customer = customer;
+    }
+    public Cart(String _id, String customer, Date createAt, int __v) {
         this._id = _id;
         this.customer = customer;
         this.createAt = createAt;
@@ -32,11 +36,11 @@ public class Cart {
         this._id = _id;
     }
 
-    public Customer getCustomer() {
+    public String getCustomer() {
         return customer;
     }
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(String customer) {
         this.customer = customer;
     }
 

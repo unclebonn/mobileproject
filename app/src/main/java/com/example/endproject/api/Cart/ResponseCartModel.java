@@ -1,10 +1,26 @@
 package com.example.endproject.api.Cart;
 
-public class ResponseCartModel {
-    private Cart data;
+import com.google.gson.annotations.SerializedName;
 
-    public ResponseCartModel(Cart data) {
+public class ResponseCartModel {
+
+    @SerializedName("data")
+
+    private Cart data;
+    @SerializedName("message")
+    private String message;
+
+    public ResponseCartModel(String message, Cart data) {
+        this.message = message;
         this.data = data;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Cart getData() {
@@ -18,7 +34,8 @@ public class ResponseCartModel {
     @Override
     public String toString() {
         return "ResponseCartModel{" +
-                "data=" + data +
+                "message='" + message + '\'' +
+                ", data=" + data +
                 '}';
     }
 }

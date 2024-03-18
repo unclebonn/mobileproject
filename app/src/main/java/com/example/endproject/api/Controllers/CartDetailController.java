@@ -4,6 +4,7 @@ import android.util.Log;
 
 import com.example.endproject.api.CartDetail.ApiServiceCartDetail;
 import com.example.endproject.api.CartDetail.CartDetail;
+import com.example.endproject.api.CartDetail.CartDetailCreate;
 import com.example.endproject.api.CartDetail.RequestCartDetailModel;
 import com.example.endproject.api.CartDetail.ResponseCartDetailModel;
 import com.example.endproject.api.CartDetail.ResponseCreateCartDetaiModel;
@@ -24,7 +25,7 @@ public class CartDetailController {
 
 
     public interface CreateCartDetailCallBack {
-        void onCreateCartDetailSuccess(CartDetail cartDetail);
+        void onCreateCartDetailSuccess(CartDetailCreate cartDetailCreate);
 
         void onGetCartDetailFailed(String msgFailed);
     }
@@ -58,7 +59,7 @@ public class CartDetailController {
             public void onResponse(Call<ResponseCreateCartDetaiModel> call, Response<ResponseCreateCartDetaiModel> response) {
                 if (response.isSuccessful()) {
                     ResponseCreateCartDetaiModel responseCreateCartDetaiModel = response.body();
-                    CartDetail cartDetail = responseCreateCartDetaiModel.getData();
+                    CartDetailCreate cartDetail = responseCreateCartDetaiModel.getData();
 
                     createCartDetailCallBack.onCreateCartDetailSuccess(cartDetail);
 
@@ -68,7 +69,7 @@ public class CartDetailController {
 
             @Override
             public void onFailure(Call<ResponseCreateCartDetaiModel> call, Throwable t) {
-
+                Log.d("Fdsfasf", "onFailure: " + t.getMessage());
             }
         });
     }

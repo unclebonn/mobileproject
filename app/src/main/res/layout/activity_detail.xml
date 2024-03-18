@@ -10,47 +10,23 @@
         android:layout_height="match_parent"
         tools:context=".ui.home.HomeFragment">
 
-        <TextView
-            android:id="@+id/navBar"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:background="#353434"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/missa"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginStart="324dp"
-            android:layout_marginTop="16dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/cart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
             android:id="@+id/detail_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             android:scaleType="fitXY"
-            app:layout_constraintTop_toBottomOf="@+id/navBar"
+            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/cart1"
+            />
 
         <TextView
             android:id="@+id/detail_title"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="50dp"
+            android:layout_margin="30dp"
             android:layout_marginTop="40dp"
             android:textColor="@color/black"
             android:textSize="25dp"
@@ -64,8 +40,7 @@
             android:id="@+id/detail_price"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginStart="50dp"
+            android:layout_margin="30dp"
             android:textColor="#686666"
             android:textSize="22dp"
             android:textStyle="normal"
@@ -78,8 +53,7 @@
             android:id="@+id/detail_description"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:layout_marginStart="48dp"
-            android:layout_marginTop="20dp"
+            android:layout_margin="30dp"
             android:textColor="#292828"
             android:textSize="22dp"
             android:textStyle="normal"
@@ -93,11 +67,11 @@
             android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="0"
+            android:text="1"
             android:gravity="center"
             android:textColor="@color/black"
             android:textSize="35dp"
-            app:layout_constraintHorizontal_bias="0.251"
+            app:layout_constraintHorizontal_bias="0.19"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/detail_description" />
@@ -131,9 +105,9 @@
 
         <Button
             android:id="@+id/detail_addtocart"
-            android:layout_width="300dp"
+            android:layout_width="match_parent"
             android:layout_height="80dp"
-            android:layout_marginTop="15dp"
+            android:layout_margin="30dp"
 
             android:text="Add to cart"
             android:textSize="25dp"

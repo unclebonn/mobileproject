@@ -15,7 +15,9 @@ import android.widget.Toast;
 
 import com.example.endproject.MainActivity;
 import com.example.endproject.R;
+import com.example.endproject.api.Auth.Login;
 import com.example.endproject.api.Controllers.LoginController;
+import com.example.endproject.ui.dashboard.DashboardFragment;
 import com.example.endproject.ui.notifications.NotificationsFragment;
 import com.example.endproject.ui.register.RegisterActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -35,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
 //        if(currentUser != null){
-//            Intent intent = new Intent(getApplicationContext(), NotificationsFragment.class);
+//            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 //            startActivity(intent);
 //            finish();
 //        }
@@ -85,11 +87,11 @@ public class LoginActivity extends AppCompatActivity {
                                     LoginController loginController = new LoginController();
                                     loginController.callApiLogin(mAuth.getUid(), new LoginController.LoginCallBack() {
                                         @Override
-                                        public void onLoginSuccess(String token) {
+                                        public void onLoginSuccess(Login login) {
                                             SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
                                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                                            editor.putString("token", token);
-                                            Log.d("token", "onLoginSuccess: "+token);
+                                            editor.putString("token", login.getToken());
+                                            editor.putString("cart", login.getCart().get_id());
                                             editor.apply();
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);

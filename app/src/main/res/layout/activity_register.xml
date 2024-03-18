@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="130dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="130dp"
         app:srcCompat="@drawable/logo2" />
 
@@ -25,27 +25,27 @@
         android:id="@+id/login_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/logo"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="149dp"
+
         android:gravity="center"
+
         android:text="Register"
-        android:layout_marginTop="200sp"
         android:textSize="25sp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" />
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/login_text2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="215dp"
+        android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="Please fill in the information below:"
-        android:layout_marginTop="280sp"
         android:textSize="15sp"
-        android:layout_marginBottom="20dp"
-        android:textStyle="normal"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" />
+        android:textStyle="normal" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/email_input_layout"
@@ -95,6 +95,38 @@
             android:hint="Confirm Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/username_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/confirm_password_input_layout"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="@drawable/color_border"
+            android:id="@+id/username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Username" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/phone_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username_input_layout"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:background="@drawable/color_border"
+            android:id="@+id/phoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Phone Number" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <Button
         android:id="@+id/btn_register"
         android:text="Register"
@@ -102,7 +134,7 @@
         android:backgroundTint="#000000"
         android:layout_width="389dp"
         android:layout_height="55dp"
-        android:layout_below="@id/confirm_password_input_layout"
+        android:layout_below="@id/phone_input_layout"
         android:layout_marginTop="10dp"
         android:layout_centerHorizontal="true" />
 
