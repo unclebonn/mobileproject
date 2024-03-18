@@ -1,7 +1,10 @@
 package com.example.endproject.api.Controllers;
 
+import android.util.Log;
+
 import com.example.endproject.api.Cart.ApiServiceCart;
 import com.example.endproject.api.Cart.Cart;
+import com.example.endproject.api.Cart.RequestCartModel;
 import com.example.endproject.api.Cart.ResponseCartModel;
 
 import retrofit2.Call;
@@ -14,6 +17,12 @@ public class CartController {
         void onSuccessGetCart(Cart cart);
 
         void onFailedGetCart(String msgFailed);
+    }
+
+    public interface CartDetailCreateCallBack {
+        void onSuccessCreateCart(Cart cart);
+
+        void onFailedCreateCart(String msgFailed);
     }
 
 
@@ -34,6 +43,25 @@ public class CartController {
             @Override
             public void onFailure(Call<ResponseCartModel> call, Throwable t) {
 
+            }
+        });
+    }
+
+
+    public void callApiCreateCart (RequestCartModel requestCartModel,  CartDetailCreateCallBack callBack ){
+        ApiServiceCart.API_SERVICE_CART.createCart(requestCartModel).enqueue(new Callback<ResponseCartModel>() {
+            @Override
+            public void onResponse(Call<ResponseCartModel> call, Response<ResponseCartModel> response) {
+//                if(response.isSuccessful()){
+                    ResponseCartModel responseCartModel = response.body();
+                    Cart cart = responseCartModel.getData();
+                    callBack.onSuccessCreateCart(cart);
+//                }
+            }
+
+            @Override
+            public void onFailure(Call<ResponseCartModel> call, Throwable t) {
+                Log.d("failedd", "onFailure: " + t.getLocalizedMessage());
             }
         });
     }

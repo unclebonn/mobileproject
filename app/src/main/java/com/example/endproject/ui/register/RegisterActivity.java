@@ -1,14 +1,27 @@
 package com.example.endproject.ui.register;
+
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+
 import androidx.annotation.NonNull;
+
 import android.content.Intent;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.endproject.R;
+import com.example.endproject.api.Cart.Cart;
+import com.example.endproject.api.Cart.RequestCartModel;
+import com.example.endproject.api.Controllers.CartController;
+import com.example.endproject.api.Controllers.CustomerController;
+import com.example.endproject.api.Customer.Customer;
+import com.example.endproject.api.Customer.RequestCustomerModel;
 import com.example.endproject.ui.login.LoginActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -19,15 +32,18 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    TextInputEditText editTextEmail, editTextPassword, editTextConfirmPassword;
+    TextInputEditText editTextEmail, editTextPassword, editTextConfirmPassword, editUsername, editPhoneNumber;
     Button buttonReg;
     FirebaseAuth mAuth;
     TextView textView;
+
     @Override
     public void onStart() {
         super.onStart();
         FirebaseUser currentUser = mAuth.getCurrentUser();
     }
+
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         mAuth = FirebaseAuth.getInstance(); // Initialize mAuth here
@@ -35,6 +51,8 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         editTextEmail = findViewById(R.id.email);
         editTextPassword = findViewById(R.id.password);
+        editUsername = findViewById(R.id.username);
+        editPhoneNumber = findViewById(R.id.phoneNumber);
         editTextConfirmPassword = findViewById(R.id.confirm_password);
         buttonReg = findViewById(R.id.btn_register);
         textView = findViewById(R.id.loginNow);
@@ -50,7 +68,9 @@ public class RegisterActivity extends AppCompatActivity {
         buttonReg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email, password, confirmPassword;
+                String email, password, confirmPassword, username, phoneNumber;
+                username = String.valueOf(editUsername.getText());
+                phoneNumber = String.valueOf(editPhoneNumber.getText());
                 email = String.valueOf(editTextEmail.getText());
                 password = String.valueOf(editTextPassword.getText());
                 confirmPassword = String.valueOf(editTextConfirmPassword.getText());
@@ -77,17 +97,68 @@ public class RegisterActivity extends AppCompatActivity {
                     return;
                 }
 
+                if (TextUtils.isEmpty(username)) {
+                    Toast.makeText(RegisterActivity.this, "Enter username", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if (TextUtils.isEmpty(phoneNumber)) {
+                    Toast.makeText(RegisterActivity.this, "Enter phone number", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
-                                    Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
+
+
+                                    FirebaseUser user = mAuth.getCurrentUser();
+                                    Log.d("thisiduid", "onComplete: " + user.getUid());
+
+                                    // create new customer in nodejs database
+                                    CustomerController customerController = new CustomerController();
+                                    RequestCustomerModel customer = new RequestCustomerModel(user.getUid(), email, username, phoneNumber);
+
+                                    Log.d("customereere", "onComplete: " + customer);
+                                    customerController.callApiCreateNewCustomer(customer, new CustomerController.CustomerCallBack() {
+                                        @Override
+                                        public void onCreateCustomerSuccess(Customer customer) {
+                                            String customerId = customer.getId();
+
+                                            // create a new cart for customer
+                                            CartController cartController = new CartController();
+                                            RequestCartModel requestCartModel = new RequestCartModel(customerId);
+
+                                            Log.d("requestCartModel", "onCreateCustomerSuccess: " + requestCartModel);
+                                            cartController.callApiCreateCart(requestCartModel, new CartController.CartDetailCreateCallBack() {
+                                                @Override
+                                                public void onSuccessCreateCart(Cart cart) {
+                                                    Toast.makeText(RegisterActivity.this, "Account created", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
+                                                    startActivity(intent);
+                                                    finish();
+                                                }
+
+                                                @Override
+                                                public void onFailedCreateCart(String msgFailed) {
+
+                                                }
+                                            });
+
+
+
+
+                                        }
+
+                                        @Override
+                                        public void onCreateCustomerFailed(String msgFailed) {
+
+                                        }
+                                    });
 
                                     // Redirect to Login activity upon successful registration
-                                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                                    startActivity(intent);
-                                    finish();
+
                                 } else {
                                     // If registration fails, display a message to the user.
                                     Toast.makeText(RegisterActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();

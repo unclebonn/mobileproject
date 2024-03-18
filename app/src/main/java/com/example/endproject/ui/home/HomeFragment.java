@@ -135,10 +135,24 @@ public class HomeFragment extends Fragment {
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context, DetailActivity.class);
-                    intent.putExtra("product", product);
-                    intent.putExtra("imageResourceId", imageIds);
-                    context.startActivity(intent);
+                    ProductController productController = new ProductController();
+                    productController.callApiGetProductDetail(product.getId(), new ProductController.ProductDetailCallBack() {
+                        @Override
+                        public void onGetProductSuccess(Product product) {
+                            Intent intent = new Intent(context, DetailActivity.class);
+                            intent.putExtra("product", product);
+                            intent.putExtra("imageResourceId", imageIds);
+                            context.startActivity(intent);
+                        }
+
+                        @Override
+                        public void onGetProductFailed() {
+
+                        }
+                    });
+
+
+//
                 }
             });
         }

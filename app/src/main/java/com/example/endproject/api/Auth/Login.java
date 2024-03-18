@@ -1,8 +1,16 @@
 package com.example.endproject.api.Auth;
 
+import com.example.endproject.api.Cart.Cart;
+import com.example.endproject.api.Customer.Customer;
 import com.google.gson.annotations.SerializedName;
 
 public class Login {
+
+    @SerializedName("customer")
+    private Customer customer;
+
+    @SerializedName("cart")
+    private Cart cart;
     @SerializedName("success")
     Boolean success;
     @SerializedName("token")
@@ -10,10 +18,28 @@ public class Login {
     @SerializedName("message")
     String message;
 
-    public Login(Boolean success, String token, String message) {
+    public Login(Customer customer, Cart cart, Boolean success, String token, String message) {
+        this.customer = customer;
+        this.cart = cart;
         this.success = success;
         this.token = token;
         this.message = message;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 
     public Boolean getSuccess() {
@@ -43,7 +69,9 @@ public class Login {
     @Override
     public String toString() {
         return "Login{" +
-                "success=" + success +
+                "customer=" + customer +
+                ", cart=" + cart +
+                ", success=" + success +
                 ", token='" + token + '\'' +
                 ", message='" + message + '\'' +
                 '}';

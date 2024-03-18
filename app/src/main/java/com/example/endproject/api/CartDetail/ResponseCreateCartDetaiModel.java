@@ -1,17 +1,17 @@
 package com.example.endproject.api.CartDetail;
 
 public class ResponseCreateCartDetaiModel {
-    private CartDetail data;
+    private CartDetailCreate data;
 
-    public ResponseCreateCartDetaiModel(CartDetail data) {
+    public ResponseCreateCartDetaiModel(CartDetailCreate data) {
         this.data = data;
     }
 
-    public CartDetail getData() {
+    public CartDetailCreate getData() {
         return data;
     }
 
-    public void setData(CartDetail data) {
+    public void setData(CartDetailCreate data) {
         this.data = data;
     }
 

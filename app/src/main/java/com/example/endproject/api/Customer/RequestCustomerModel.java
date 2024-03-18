@@ -1,24 +1,24 @@
 package com.example.endproject.api.Customer;
 
 public class RequestCustomerModel {
-    private String _id;
+    private String uid;
     private String email;
     private String name;
     private String phone;
 
-    public RequestCustomerModel(String _id, String email, String name, String phone) {
-        this._id = _id;
+    public RequestCustomerModel(String uid, String email, String name, String phone) {
+        this.uid = uid;
         this.email = email;
         this.name = name;
         this.phone = phone;
     }
 
     public String get_id() {
-        return _id;
+        return uid;
     }
 
-    public void set_id(String _id) {
-        this._id = _id;
+    public void set_id(String uid) {
+        this.uid = uid;
     }
 
     public String getEmail() {
@@ -48,7 +48,7 @@ public class RequestCustomerModel {
     @Override
     public String toString() {
         return "RequestCustomerModel{" +
-                "_id='" + _id + '\'' +
+                "_id='" + uid + '\'' +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +

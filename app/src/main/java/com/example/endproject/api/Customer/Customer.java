@@ -5,6 +5,8 @@ import com.google.gson.annotations.SerializedName;
 public class Customer {
     @SerializedName("_id")
     private String id;
+    @SerializedName("uid")
+    private String uid;
     @SerializedName("email")
     private String email;
     @SerializedName("name")
@@ -14,8 +16,16 @@ public class Customer {
     @SerializedName("__v")
     private int __v;
 
-    public Customer(String id, String email, String name, String phone, int __v) {
+    public Customer(String uid, String email, String name, String phone) {
+        this.uid = uid;
+        this.email = email;
+        this.name = name;
+        this.phone = phone;
+    }
+
+    public Customer(String id, String uid, String email, String name, String phone, int __v) {
         this.id = id;
+        this.uid = uid;
         this.email = email;
         this.name = name;
         this.phone = phone;
@@ -28,6 +38,14 @@ public class Customer {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 
     public String getEmail() {
@@ -66,6 +84,7 @@ public class Customer {
     public String toString() {
         return "Customer{" +
                 "id='" + id + '\'' +
+                ", uid='" + uid + '\'' +
                 ", email='" + email + '\'' +
                 ", name='" + name + '\'' +
                 ", phone='" + phone + '\'' +

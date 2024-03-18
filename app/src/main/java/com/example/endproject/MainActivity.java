@@ -49,39 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
-// chỗ của minh tâm bắt đầu từ chỗ này
-// cho dang nhạp nay copy qua lay uid truyen vao
-        SharedPreferences sharedPreferences = getSharedPreferences("Mobile", Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-
-        LoginController loginController = new LoginController();
-        CartController cartController = new CartController();
-
-
-        loginController.callApiLogin("fdsfsdfsd", new LoginController.LoginCallBack() {
-            @Override
-            public void onLoginSuccess(String token) {
-                    editor.putString("token",token);
-                    editor.apply();
-            }
-        });
-
-        // cho này gọi api get customer để lấy id customer lưu vào share
-        // chỗ này gọi api get cart id để lấy id cart luu vao share
-
-
-
-        String token = sharedPreferences.getString("token","");
-        // tuong tu
-
     }
 
 

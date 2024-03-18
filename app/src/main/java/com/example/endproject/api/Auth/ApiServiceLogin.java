@@ -15,7 +15,7 @@ public interface ApiServiceLogin {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     ApiServiceLogin API_SERVICE_LOGIN = new Retrofit.Builder()
-            .baseUrl("http://192.168.102.4:3000/")
+            .baseUrl("http://10.86.28.22:3000/")
             .addConverterFactory((GsonConverterFactory.create(gson)))
             .client(httpClient.build())
             .build()

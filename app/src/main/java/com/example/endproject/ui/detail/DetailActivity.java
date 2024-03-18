@@ -1,19 +1,25 @@
 package com.example.endproject.ui.detail;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.endproject.R;
+import com.example.endproject.api.CartDetail.CartDetail;
+import com.example.endproject.api.CartDetail.CartDetailCreate;
+import com.example.endproject.api.CartDetail.RequestCartDetailModel;
+import com.example.endproject.api.Controllers.CartDetailController;
 import com.example.endproject.api.Product.Product;
 
 public class DetailActivity extends AppCompatActivity {
-    Button buttonPlus, buttonMinus;
+    Button buttonPlus, buttonMinus , buttonAddToCart;
     TextView textViewNumber;
     Product product;
     int imageId;
@@ -23,6 +29,7 @@ public class DetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail);
 
         // Initialize views
+        buttonAddToCart = findViewById(R.id.detail_addtocart);
         buttonPlus = findViewById(R.id.plus);
         buttonMinus = findViewById(R.id.minus);
         textViewNumber = findViewById(R.id.text_view_number);
@@ -35,6 +42,36 @@ public class DetailActivity extends AppCompatActivity {
         if (product != null) {
             displayProductDetails();
         }
+
+        // get store value from sharedPreferences
+        SharedPreferences sharedPreferences = getSharedPreferences("data", MODE_PRIVATE);
+        String token = sharedPreferences.getString("token","");
+        String cart = sharedPreferences.getString("cart","");
+
+        // add product to cart
+        buttonAddToCart.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                CartDetailController cartDetailController = new CartDetailController();
+                RequestCartDetailModel requestCartDetailModel = new RequestCartDetailModel(product.getId(),1,cart);
+
+                cartDetailController.callApiCreateCartDetail(token, requestCartDetailModel, new CartDetailController.CreateCartDetailCallBack() {
+                    @Override
+                    public void onCreateCartDetailSuccess(CartDetailCreate cartDetailCreate) {
+                        if(cartDetailCreate != null){
+                            Toast.makeText(DetailActivity.this, "Add to cart successfully", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onGetCartDetailFailed(String msgFailed) {
+
+                    }
+                });
+            }
+        });
+
 
         // Set onClickListeners for buttons
         buttonPlus.setOnClickListener(new View.OnClickListener() {
@@ -49,6 +86,8 @@ public class DetailActivity extends AppCompatActivity {
                 minus(v);
             }
         });
+
+
     }
 
     private void displayProductDetails() {
@@ -78,7 +117,7 @@ public class DetailActivity extends AppCompatActivity {
 
     public void minus(View view) {
         int currentValue = Integer.parseInt(textViewNumber.getText().toString());
-        if (currentValue > 0) {
+        if (currentValue > 1) {
             currentValue--;
             textViewNumber.setText(String.valueOf(currentValue));
         }

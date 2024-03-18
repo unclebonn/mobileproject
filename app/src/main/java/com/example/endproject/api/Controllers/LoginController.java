@@ -16,7 +16,7 @@ import retrofit2.Response;
 public class LoginController {
 
     public interface LoginCallBack {
-        void onLoginSuccess(String token );
+        void onLoginSuccess(Login login );
     }
 
 
@@ -29,8 +29,9 @@ public class LoginController {
                 if (response.isSuccessful()) {
                     LoginResponseModel data = response.body();
                     Login loginData = data.getData();
+                    Log.d("loginDatat", "onResponse: " + loginData.toString());
                     if (loginData != null) {
-                        callBack.onLoginSuccess(loginData.getToken());
+                        callBack.onLoginSuccess(loginData);
                     }
 
 

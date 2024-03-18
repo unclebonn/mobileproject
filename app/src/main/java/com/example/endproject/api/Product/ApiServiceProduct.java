@@ -14,7 +14,7 @@ public interface ApiServiceProduct {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     ApiServiceProduct API_SERVICE_PRODUCT = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.175:3000/")
+            .baseUrl("http://10.86.28.22:3000/")
             .addConverterFactory((GsonConverterFactory.create(gson)))
             .client(httpClient.build())
             .build()
@@ -24,5 +24,7 @@ public interface ApiServiceProduct {
     // lay list san pham de tren trang dashboard
     @GET("api/product")
     Call<ProductResponseModel> getListProduct();
+
+
 
 }

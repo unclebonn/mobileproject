@@ -29,7 +29,6 @@ public class ProductController {
     }
 
 
-
     // api này đúng để lấy tất cả các sản phẩm hiện ra giao diện
     public void callApiGetProducts(ProductsCallBack productsCallBack) {
         ApiServiceProduct.API_SERVICE_PRODUCT.getListProduct().enqueue(new Callback<ProductResponseModel>() {
@@ -60,10 +59,12 @@ public class ProductController {
         ApiServiceProductDetail.API_SERVICE_PRODUCT.getProductDetail(productId).enqueue(new Callback<ProductDetailResponseModel>() {
             @Override
             public void onResponse(Call<ProductDetailResponseModel> call, Response<ProductDetailResponseModel> response) {
-                ProductDetailResponseModel data = response.body();
-                Product product = data.getData();
-                productDetailCallBack.onGetProductSuccess(product);
-                Log.d("productDetails", "onResponse: " + product.toString());
+                if (response.isSuccessful()) {
+                    ProductDetailResponseModel data = response.body();
+                    Product product = data.getData();
+                    productDetailCallBack.onGetProductSuccess(product);
+                    Log.d("productDetails", "onResponse: " + product.toString());
+                }
             }
 
             @Override

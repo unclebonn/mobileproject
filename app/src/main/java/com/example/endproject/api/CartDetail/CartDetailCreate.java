@@ -4,8 +4,7 @@ import com.example.endproject.api.Cart.Cart;
 import com.example.endproject.api.Product.Product;
 import com.google.gson.annotations.SerializedName;
 
-public class CartDetail {
-
+public class CartDetailCreate {
     @SerializedName("_id")
     private String _id;
 
@@ -13,13 +12,13 @@ public class CartDetail {
     private String status;
     @SerializedName("product")
 
-    private Product product;
+    private String product;
     @SerializedName("quantity")
 
     private int quantity;
     @SerializedName("cart")
 
-    private Cart cart;
+    private String cart;
 
     @SerializedName("createAt")
     private String createAt;
@@ -29,18 +28,18 @@ public class CartDetail {
 
     @Override
     public String toString() {
-        return "CartDetail{" +
+        return "CartDetailCreate{" +
                 "_id='" + _id + '\'' +
                 ", status='" + status + '\'' +
-                ", product=" + product +
+                ", product='" + product + '\'' +
                 ", quantity=" + quantity +
-                ", cart=" + cart +
+                ", cart='" + cart + '\'' +
                 ", createAt='" + createAt + '\'' +
                 ", __v=" + __v +
                 '}';
     }
 
-    public CartDetail(String _id, String status, Product product, int quantity, Cart cart, String createAt, int __v) {
+    public CartDetailCreate(String _id, String status, String product, int quantity, String cart, String createAt, int __v) {
         this._id = _id;
         this.status = status;
         this.product = product;
@@ -66,11 +65,11 @@ public class CartDetail {
         this.status = status;
     }
 
-    public Product getProduct() {
+    public String getProduct() {
         return product;
     }
 
-    public void setProduct(Product product) {
+    public void setProduct(String product) {
         this.product = product;
     }
 
@@ -82,11 +81,11 @@ public class CartDetail {
         this.quantity = quantity;
     }
 
-    public Cart getCart() {
+    public String getCart() {
         return cart;
     }
 
-    public void setCart(Cart cart) {
+    public void setCart(String cart) {
         this.cart = cart;
     }
 

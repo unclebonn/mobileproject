@@ -19,7 +19,7 @@ public interface ApiServiceCartDetail {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     ApiServiceCartDetail API_SERVICE_CART_DETAIL = new Retrofit.Builder()
-            .baseUrl("http://192.168.102.4:3000/")
+            .baseUrl("http://10.86.28.22:3000/")
             .addConverterFactory((GsonConverterFactory.create(gson)))
             .client(httpClient.build())
             .build()
