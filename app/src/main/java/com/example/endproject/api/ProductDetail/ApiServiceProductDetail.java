@@ -15,7 +15,7 @@ public interface ApiServiceProductDetail {
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
 
     ApiServiceProductDetail API_SERVICE_PRODUCT = new Retrofit.Builder()
-            .baseUrl("http://10.86.28.22:3000/")
+            .baseUrl("http://192.168.88.229:3000/")
             .addConverterFactory((GsonConverterFactory.create(gson)))
             .client(httpClient.build())
             .build()

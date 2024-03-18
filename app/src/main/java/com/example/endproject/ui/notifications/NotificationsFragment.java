@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.endproject.R;
+import com.example.endproject.map.Map;
 import com.example.endproject.ui.login.LoginActivity;
 import com.example.endproject.databinding.FragmentNotificationsBinding;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,7 +22,7 @@ public class NotificationsFragment extends Fragment {
 
     private FragmentNotificationsBinding binding;
     FirebaseAuth auth;
-    Button button;
+    Button button, buttonLocation;
     FirebaseUser user;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -34,6 +35,7 @@ public class NotificationsFragment extends Fragment {
 
         auth = FirebaseAuth.getInstance();
         button = root.findViewById(R.id.logout); // Assuming you have a logout button in your fragment layout
+        buttonLocation = root.findViewById(R.id.location);
         user = auth.getCurrentUser();
 
         if (user == null){
@@ -54,6 +56,15 @@ public class NotificationsFragment extends Fragment {
                 getActivity().finish();
             }
         });
+
+        buttonLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(root.getContext(), Map.class);
+                startActivity(intent);
+            }
+        });
+
 
         return root;
     }
