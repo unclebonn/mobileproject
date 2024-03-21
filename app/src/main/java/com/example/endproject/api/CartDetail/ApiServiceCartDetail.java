@@ -29,7 +29,7 @@ public interface ApiServiceCartDetail {
 
 
     @GET("api/cartdetail/detail/{id}")
-    Call<ResponseCartDetailModel> getCartDetailOfCustomer(@Header("x-access-token") String token, @Path("id") String transactionId);
+    Call<ResponseCartDetailModel> getCartDetailOfCustomer(@Header("x-access-token") String token, @Path("id") String customerId);
 
     @POST("api/cartdetail/create")
     Call<ResponseCreateCartDetaiModel> createCartDetail(@Header("x-access-token") String token, @Body RequestCartDetailModel requestCartDetailModel);

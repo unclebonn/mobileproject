@@ -45,7 +45,7 @@ public class CartDetailController {
 
             @Override
             public void onFailure(Call<ResponseCartDetailModel> call, Throwable t) {
-
+                Log.d("lasycartdetail", "onFailure: " + t.getMessage());
             }
         });
     }

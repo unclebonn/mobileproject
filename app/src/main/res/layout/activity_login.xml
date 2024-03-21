@@ -73,6 +73,7 @@
         android:layout_centerHorizontal="true"  >
 
         <com.google.android.material.textfield.TextInputEditText
+            android:inputType="textPassword"
             android:background="@drawable/color_border"
             android:id="@+id/password"
             android:layout_width="match_parent"

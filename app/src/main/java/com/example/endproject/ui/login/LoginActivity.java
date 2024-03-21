@@ -92,7 +92,7 @@ public class LoginActivity extends AppCompatActivity {
                                             editor.putString("cart", login.getCart().get_id());
                                             editor.putString("customerId", login.getCustomer().getId());
                                             editor.apply();
-                                            Intent intent = new Intent(getApplicationContext(), CartDetailActivity.class);
+                                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             startActivity(intent);
                                             finish();
                                         }

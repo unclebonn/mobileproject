@@ -19,7 +19,7 @@ public class AppPaypal extends Application {
                 Environment.SANDBOX,
                 CurrencyCode.USD,
                 UserAction.PAY_NOW,
-                "com.devkhoi.paypaltest://paypalpay"
+                "nativexo://paypalpay"
         ));
     }
 }

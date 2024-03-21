@@ -8,6 +8,7 @@
 
 
     <application
+        android:name=".paypal.AppPaypal"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:enableOnBackInvokedCallback="true"
@@ -51,12 +52,12 @@
         </activity>
         <activity
             android:name=".ui.register.RegisterActivity"
-            android:exported="false" />
+            android:exported="true" />
 
 
-        <activity android:name=".ui.cart.CartDetailActivity"
-            android:exported="true"
-        />
+        <activity
+            android:name=".ui.cart.CartDetailActivity"
+            android:exported="true" />
 
         <activity
             android:name=".MainActivity"
@@ -70,6 +71,9 @@
             <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             <!-- </intent-filter> -->
         </activity>
+        <activity
+            android:name="com.example.endproject.ui.cartDetail.CartDetailActivity"
+            android:exported="true" />
     </application>
 
 </manifest>
